@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+            border: 1px black double;
+            text-align: center
+        }
+    </style>
+</head>
+<body>
+<table style = "border: 1px black double;">
+    <tr>
+        <td>
+            <form th:action="@{/user}">
+                <input type="submit" value="HomePage" style="padding: 5px 10px"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/logout}">
+                <input type="submit" value="Logout" style="padding: 5px 10px"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<div style="font-weight: bold;">/ all user details</div>
+<h1>All users details:</h1>
+<table style = "border: 1px black double;">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}">id</td>
+        <td th:text="${user.name}">name</td>
+        <td th:text="${user.email}">email</td>
+        <td><form th:action="@{/admin/{id}/edit(id=${user.id})}">
+            <input type="submit" value="Edit" style="padding: 5px 10px"/>
+        </form></td>
+        <td><form method="GET" th:action="@{/admin/delete/{id}(id=${user.id})}">
+            <input type="submit" value="Delete" style="padding: 5px 10px">
+        </form></td>
+    </tr>
+
+</table>
+<br>
+<form action="/admin/new">
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>

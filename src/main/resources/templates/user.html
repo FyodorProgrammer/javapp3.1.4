@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home user page</title>
+    <style>
+        table th, table td {
+            padding: 5px;
+            border: 1px black double;
+            text-align: center
+        }
+    </style>
+</head>
+<body>
+<table style = "border: 1px black double;">
+    <tr>
+        <td>
+            <form th:action="@{/user}">
+                <input type="submit" value="HomePage" style="padding: 5px 10px"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/logout}">
+                <input type="submit" value="Logout" style="padding: 5px 10px"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<div style="font-weight: bold;">/ Home user page</div>
+<h1>Home user page</h1>
+<table style = "border: 1px black double;">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+
+    <tr>
+        <td th:text="${user.id}">id</td>
+        <td th:text="${user.name}">name</td>
+        <td th:text="${user.email}">email</td>
+    </tr>
+
+</table>
+</body>
+</html>

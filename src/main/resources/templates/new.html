@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add user page</title>
+</head>
+<body>
+<table style = "border: 1px black double;">
+    <tr>
+        <td>
+            <form th:action="@{/user}">
+                <input type="submit" value="HomePage" style="padding: 5px 10px"/>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/logout}">
+                <input type="submit" value="Logout" style="padding: 5px 10px"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<div style="font-weight: bold;">/ <a th:href="@{/admin}">all users</a> / Add new user</div>
+<h1>Enter user details:</h1>
+<form th:method="POST" th:action="@{/admin/saveUser}" th:object="${user}">
+
+  <label for="name">Name: </label><br>
+  <input type="text" th:field="*{name}" id="name"/><br>
+<!--    <p th:text="${usernameError}">текст ошибки</p>-->
+    <label for="lastName">Email: </label><br>
+  <input type="text" th:field="*{email}" id="lastName"/><br>
+
+    <label for="email">Password: </label><br>
+  <input type="text" th:field="*{password}" id="email"/><br>
+  <br>
+  <input type="submit" value="Add user"/>
+</form>
+</body>
+</html>
