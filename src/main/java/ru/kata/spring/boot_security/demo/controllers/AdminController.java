@@ -12,6 +12,7 @@ import ru.kata.spring.boot_security.demo.services.UserService;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
@@ -53,7 +54,7 @@ public class AdminController {
     @RequestMapping(value = "/update", method = {RequestMethod.PUT, RequestMethod.GET})
     public String update(User user) {
         if (user.getRoles().isEmpty()) {
-            List<Role> roles = userService.findUserById(user.getId()).getRoles();
+            Set<Role> roles = userService.findUserById(user.getId()).getRoles();
             user.setRoles(roles);
         }
         userService.update(user);

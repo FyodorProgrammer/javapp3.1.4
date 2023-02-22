@@ -9,8 +9,6 @@ import ru.kata.spring.boot_security.demo.entenies.User;
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
-
     @RequestMapping("")
     public String mainPageUserInfo(Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("userModel", user);
